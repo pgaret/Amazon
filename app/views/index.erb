@@ -1,0 +1,18 @@
+<% if @user.name == "Empty" %>
+  <form action="/login" method="get">
+    <input type="submit" value="Login">
+  </form>
+<% else %>
+  Welcome <%=@user.name%>!
+  <form action="/users/<%=@user.id%>" method="get">
+    <input type="submit" value="Account">
+  </form>
+<% end %>
+<%@items.each do |item|%>
+  <h3>Item: <%=item.name%></h3>
+  Cost: <%=item.price%><br>
+  Description: <%=item.description%><br>
+  <form action="/users/<%=@user.id%>/items/<%=item.id%>" method="get">
+    <input type="submit" value="More">
+  </form>
+<% end %>

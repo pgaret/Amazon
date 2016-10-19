@@ -1,0 +1,13 @@
+<h1><%=@user.name%></h1><br>
+<form action="/" method="get">
+  <input type="submit" value="Home">
+</form>
+<h2>Cart: </h2>
+<%@user.cart.items.each do |item|%>
+  <h3>Item: <%=item.name%></h3>
+  Cost: <%=item.price%><br>
+  Description: <%=item.description%><br>
+  <form action="/users/<%=@user.id%>/items/<%=item.id%>" method="get">
+    <input type="submit" value="More">
+  </form>
+<% end %>
