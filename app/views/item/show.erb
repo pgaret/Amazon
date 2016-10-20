@@ -1,7 +1,8 @@
-<a href="/users/<%@user.id%>"><%=@user.name%></a>
-
-<h1>Name: <%=@item.name%></h1>
-<h3>Description: <br><%=@item.description%><br>
-Price: <br><%=@item.price%></h3>
-
-<a href="/"
+<h1>Name:</h1> <h3><%=@item.name%></h3>
+<h2>Description:</h2> <h3><%=@item.description%><br></h3>
+<h2>Price:</h2><h3>$<%=@item.price%></h3>
+<% if @user.name != "Empty" %>
+  <form action="/users/<%=@user.id%>/items/<%=@item.id%>" method="post">
+    <input type="submit" name="item_id" value="Add to Cart">
+  </form>
+<% end %>

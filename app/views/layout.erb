@@ -3,8 +3,45 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-  </head>
-  <body>
 
+    <style>
+      ul {
+        list-style-type: none;
+        background-color: green;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      li{
+        float: left;
+      }
+      li a{
+        display: block;
+        color: green;
+        text-align: center;
+        text-decoration: none;
+        font-size: 32px;
+        padding: 14px 16px;
+        background-color: darkblue;
+      }
+      li a:hover{
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><% if @user.name == "Empty"%>
+              <a href="/login">Login</a>
+          <% else %>
+      <li>      <a href="/users/<%=@user.id%>"><%=@user.name.capitalize%></a></li>
+      <li>      <a href="/logout/<%=@user.id%>">Logout</a></li>
+          <% end %>
+      </li>
+    </ul>
+
+    <%=yield%>
   </body>
 </html>

@@ -1,20 +1,20 @@
 class UsersController < ApplicationController
   get '/users/:id/index' do
-    @user = User.all.find(params["id"].to_i)
-    @items = Item.all
+    @user = User.all.find(params["id"])
+    @items = Item.all.select {|item| item.cart_id != 0}
     if @user.login == true
       erb :index
     else
-      erb :badlogin
+      erb :login
     end
   end
 
   get '/users/:id' do
     @user = User.all.find(params["id"])
-    if @user.login == false
-      erb :login
+    if @user.login == true
+      erb :'user/show'
     else
-      erb :badlogin
+      erb :login
     end
   end
 end
