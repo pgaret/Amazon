@@ -1,8 +1,13 @@
-<%@items.each do |item|%>
-  <h3>Item: <%=item.name%></h3>
-  Cost: <%=item.price%><br>
-  Description: <%=item.description%><br>
-  <form action="/users/<%=@user.id%>/items/<%=item.id%>" method="get">
-    <input type="submit" value="More">
-  </form>
-<% end %>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <%@items.each do |item|%>
+        <h3>Item: <%=item.name%></h3>
+        Cost: <%=item.price%><br>
+        Description: <%=item.description%><br>
+        <form action="/users/<%=@user.id%>/items/<%=item.id%>" method="get">
+          <input id="more" type="submit" value="More">
+        </form>
+      <% end %>
+    </div>
+</div>
